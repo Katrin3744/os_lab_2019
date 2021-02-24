@@ -1,0 +1,4 @@
+bash-4.2 /projects/Katrin3744-os_lab_2019/lab1/src $ bash average.sh 1 2 3 4 5
+bash-4.2 /projects/Katrin3744-os_lab_2019/lab1/src $ chmod ugo+rwx numbers.txt
+bash-4.2 /projects/Katrin3744-os_lab_2019/lab1/src $ chmod ugo+rwx average.sh
+bash-4.2 /projects/Katrin3744-os_lab_2019/lab1/src $ ./average.sh $(cat numbers.txt)

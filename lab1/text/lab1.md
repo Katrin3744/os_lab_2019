@@ -20,7 +20,7 @@
 ### Ресурсы
 
 * [Небольшой справочник по основным утилитам командной строки, которые можно найти почти в любом дистрибутиве Linux.](https://searchdatacenter.techtarget.com/tutorial/77-Linux-commands-and-utilities-youll-actually-use)
-* [Про `&` в `shell`.](https://stackoverflow.com/questions/13338870/what-does-at-the-end-of-a-linux-command-mean)
+* [Про `&` в `shell`.]
 
 # Задание 2
 
@@ -32,7 +32,6 @@
 * Специальные девайсы в *nix системах (`/dev/null`, `/dev/full` и т.д.)
 
 ### Задание
-
 * С помощью команды `grep`, используя `pipe` и редирект (`>`), запишите в файл `with_cake.txt` все строчки из файла `cake_rhymes.txt`, в которых есть слово `cake`.
 
 * Сделайте команду `rm` "тихой", используя редирект в `/dev/null`.
