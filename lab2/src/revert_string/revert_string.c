@@ -2,6 +2,16 @@
 
 void RevertString(char *str)
 {
-	// your code here
+	int j,i;
+    char t;
+
+    for (i=0, j=strlen(str)-1; i<j; i++,j--)
+    {
+        t= *(str+i);
+        *(str+i)=*(str+j);
+        *(str+j)=t;
+
+
+    }
 }
 

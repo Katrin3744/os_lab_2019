@@ -70,7 +70,7 @@
 
 * [Описание того, как работают переменные окружения.](https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-a-linux-vps)
 
-# Задание 4\* (повышенной сложности)
+# Задание 4\* (повышенной сложности) 
 
 ### Необходимые знания
 

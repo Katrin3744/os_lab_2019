@@ -1,0 +1,21 @@
+Задание 1
+bash-4.2 /projects/Katrin3744-os_lab_2019/lab2 $ cd src
+bash-4.2 /projects/Katrin3744-os_lab_2019/lab2/src $ cd swap
+bash-4.2 /projects/Katrin3744-os_lab_2019/lab2/src/swap $ gcc swap.c -o swap  
+/usr/lib/gcc/x86_64-redhat-linux/4.8.5/../../../../lib64/crt1.o: In function `_start':
+(.text+0x20): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+bash-4.2 /projects/Katrin3744-os_lab_2019/lab2/src/swap $ gcc swap.c swap.h main.c -o swap
+bash-4.2 /projects/Katrin3744-os_lab_2019/lab2/src/swap $ ./swap
+b a
+
+Задание 2
+bash-4.2 /projects/Katrin3744-os_lab_2019/lab2/src/swap $ cd ..
+bash-4.2 /projects/Katrin3744-os_lab_2019/lab2/src $ cd revert_string
+bash-4.2 /projects/Katrin3744-os_lab_2019/lab2/src/revert_string $ gcc main.c revert_string.c revert_string.h -o revert_string
+revert_string.c: In function 'RevertString':
+revert_string.c:8:17: warning: incompatible implicit declaration of built-in function 'strlen' [enabled by default]
+     for (i=0, j=strlen(str)-1; i<j; i++,j--)
+                 ^
+bash-4.2 /projects/Katrin3744-os_lab_2019/lab2/src/revert_string $ 
+
