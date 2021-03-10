@@ -1,0 +1,13 @@
+Задание 3
+1)fPIC
+object files for shared libraries need to be compiled as position independent
+code (-fPIC) because they are mapped to any position in the address space.
+2)Как создавать статические библиотеки и что это такое
+A static library is basically a set of object files that were copied into a single file with the suffix .a.
+The static file is created with the archiver (ar).
+ar rcs bin/static/libtq84.a bin/static/add.o bin/static/answer.o
+3)связать main.o с библиотекой.
+Флаг -L указывает (нестандартный) каталог, в котором можно найти библиотеки.
+Флаг -l указывает имя библиотеки. Обратите внимание, что предполагается, что библиотека начинается с lib и заканчивается на .o (поэтому lib и .o указывать не следует)
+4)A shared library is created with GCC's -shared flag and naming the resultant file with the suffix .so rather than .a.
+5)If the shared object is in a non standard location, we need to tell where it is via the LD_LIBRARY_PATH environment variable

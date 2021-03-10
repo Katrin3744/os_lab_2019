@@ -19,3 +19,53 @@ revert_string.c:8:17: warning: incompatible implicit declaration of built-in fun
                  ^
 bash-4.2 /projects/Katrin3744-os_lab_2019/lab2/src/revert_string $ 
 
+
+Задание 3
+[jboss@workspaceof7r3wzilkb7avxm projects]$ pwd
+/projects
+[jboss@workspaceof7r3wzilkb7avxm projects]$ cd /os_lab_2019/lab2/src
+bash: cd: /os_lab_2019/lab2/src: No such file or directory
+[jboss@workspaceof7r3wzilkb7avxm projects]$ cd /projects/os_lab_2019/lab2/src
+[jboss@workspaceof7r3wzilkb7avxm src]$ pwd
+/projects/os_lab_2019/lab2/src
+[jboss@workspaceof7r3wzilkb7avxm src]$ pwd revert_string
+/projects/os_lab_2019/lab2/src
+[jboss@workspaceof7r3wzilkb7avxm src]$ pwd
+/projects/os_lab_2019/lab2/src
+[jboss@workspaceof7r3wzilkb7avxm src]$ cd revert_string
+[jboss@workspaceof7r3wzilkb7avxm revert_string]$ ar rcs librevert_string.a revert_string.o
+ar: revert_string.o: No such file or directory
+[jboss@workspaceof7r3wzilkb7avxm revert_string]$ gcc -c       main.c        -o bin/main.o
+[jboss@workspaceof7r3wzilkb7avxm revert_string]$ gcc -c       revert_string.c    -o bin/static/revert_string.o
+revert_string.c: In function ‘RevertString’:
+revert_string.c:8:17: warning: implicit declaration of function ‘strlen’ [-Wimplicit-function-declaration]
+     for (i=0, j=strlen(str)-1; i<j; i++,j--)
+                 ^~~~~~
+revert_string.c:8:17: warning: incompatible implicit declaration of built-in function ‘strlen’
+revert_string.c:8:17: note: include ‘<string.h>’ or provide a declaration of ‘strlen’
+revert_string.c:2:1:
++#include <string.h>
+ 
+revert_string.c:8:17:
+     for (i=0, j=strlen(str)-1; i<j; i++,j--)
+                 ^~~~~~
+[jboss@workspaceof7r3wzilkb7avxm revert_string]$ gcc -c -fPIC      revert_string.c    -o bin/shared/revert_string.o
+revert_string.c: In function ‘RevertString’:
+revert_string.c:8:17: warning: implicit declaration of function ‘strlen’ [-Wimplicit-function-declaration]
+     for (i=0, j=strlen(str)-1; i<j; i++,j--)
+                 ^~~~~~
+revert_string.c:8:17: warning: incompatible implicit declaration of built-in function ‘strlen’
+revert_string.c:8:17: note: include ‘<string.h>’ or provide a declaration of ‘strlen’
+revert_string.c:2:1:
++#include <string.h>
+ 
+revert_string.c:8:17:
+     for (i=0, j=strlen(str)-1; i<j; i++,j--)
+                 ^~~~~~
+[jboss@workspaceof7r3wzilkb7avxm revert_string]$ ar rcs bin/static/librevert_string.a bin/static/revert_string.o
+[jboss@workspaceof7r3wzilkb7avxm revert_string]$ gcc   bin/main.o  -Lbin/static -lrevert_string -o bin/statically-linked
+[jboss@workspaceof7r3wzilkb7avxm revert_string]$ gcc -shared bin/shared/revert_string.o -o bin/shared/librevert_string.so
+[jboss@workspaceof7r3wzilkb7avxm revert_string]$ gcc  bin/main.o -Lbin/shared -lrevert_string -o bin/use-shared-library
+[jboss@workspaceof7r3wzilkb7avxm revert_string]$ LD_LIBRARY_PATH=$(pwd)/bin/shared bin/use-shared-library rtyrur
+Reverted: rurytr
+
