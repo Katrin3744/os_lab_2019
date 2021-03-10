@@ -1,0 +1,11 @@
+Задание 1
+[jboss@workspaceof7r3wzilkb7avxm projects]$ cd os_lab_2019/lab3/src
+[jboss@workspaceof7r3wzilkb7avxm src]$ pwd
+[jboss@workspaceof7r3wzilkb7avxm src]$ gcc find_min_max.c utils.c  sequential_min_max.c -o sequentional_min_max
+[jboss@workspaceof7r3wzilkb7avxm src]$ chmod u+rwx sequentional_min_max
+[jboss@workspaceof7r3wzilkb7avxm src]$ ./sequentional_min_max 4 12
+min: 246243954
+max: 1968078301
+
+Задание 2-3
+
