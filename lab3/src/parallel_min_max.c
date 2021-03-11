@@ -40,16 +40,28 @@ int main(int argc, char **argv) {
         switch (option_index) {
           case 0:
             seed = atoi(optarg);
+            if(optarg<=0)
+            {
+                return 1;
+            }
             // your code here
             // error handling
             break;
           case 1:
             array_size = atoi(optarg);
+            if(optarg<=0)
+            {
+                return 1;
+            }
             // your code here
             // error handling
             break;
           case 2:
             pnum = atoi(optarg);
+            if(optarg<=0)
+            {
+                return 1;
+            }
             // your code here
             // error handling
             break;
@@ -91,10 +103,15 @@ int main(int argc, char **argv) {
   struct timeval start_time;
   gettimeofday(&start_time, NULL);
 
+
+
   for (int i = 0; i < pnum; i++) {
     pid_t child_pid = fork();
     if (child_pid >= 0) {
+
+
       // successful fork
+     
       active_child_processes += 1;
       if (child_pid == 0) {
         // child process
