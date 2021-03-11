@@ -102,6 +102,9 @@ int main(int argc, char **argv) {
 
   struct timeval start_time;
   gettimeofday(&start_time, NULL);
+  int n = array_size / pnum;
+  int pipefd[2];
+  pipe(pipefd);
 
 
 
@@ -115,12 +118,26 @@ int main(int argc, char **argv) {
       active_child_processes += 1;
       if (child_pid == 0) {
         // child process
+        struct MinMax min_max;
+        min_max = GetMinMax(array, (unsigned int)i * n, (unsigned int)(i + 1) * n);
 
         // parallel somehow
 
         if (with_files) {
+            FILE *fp;
+            if (i == 0)
+          {
+            fp = fopen("output.txt", "w");
+          }
+          else
+          {
+            fp = fopen("output.txt", "a");
+          }
+          fprintf(fp, "%d %d\n", min_max.min, min_max.max);
+          fclose(fp);
           // use files here
         } else {
+            write(pipefd[1], &min_max, sizeof(struct MinMax));
           // use pipe here
         }
         return 0;
@@ -134,7 +151,7 @@ int main(int argc, char **argv) {
 
   while (active_child_processes > 0) {
     // your code here
-
+    wait(NULL);
     active_child_processes -= 1;
   }
 
@@ -147,8 +164,26 @@ int main(int argc, char **argv) {
     int max = INT_MIN;
 
     if (with_files) {
-      // read from files
+      struct MinMax min_max;
+      FILE *fp;
+      int j;
+      fp = fopen("output.txt", "r");
+      for (j = 0; j < i || (i == 0 && j <= i); j++)
+      {
+        fscanf(fp, "%d %d", &min_max.min, &min_max.max);
+        if (min < min_max.min)
+          min_max.min = min;
+        if (max > min_max.max)
+          min_max.max = max;
+      }
+      fclose(fp);
+      min = min_max.min;
+      max = min_max.max;
     } else {
+      struct MinMax min_max;
+      read(pipefd[0], &min_max, sizeof(struct MinMax));
+      min = min_max.min;
+      max = min_max.max;
       // read from pipes
     }
 
